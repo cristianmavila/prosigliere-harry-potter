@@ -26,7 +26,7 @@ export type Character = {
   image: string;
 };
 
-const enum HogwartsHouse {
+export const enum HogwartsHouse {
   Gryffindor = "Gryffindor",
   Slytherin = "Slytherin",
   Hufflepuff = "Hufflepuff",

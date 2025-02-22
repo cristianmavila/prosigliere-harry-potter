@@ -4,6 +4,7 @@ import { fetchCharacterDetail } from "@/services";
 import { useCharacterStore } from "@/stores/characters";
 import ProfileImage from "@/components/profile-image";
 import { Button } from "@/components/ui/button";
+import { HogwartsHouse } from "@/types/character";
 
 const CharactersDetail = () => {
   const { favoriteCharacter, checkFavorite, removeFavoriteCharacter, preferred, preferredHouse } =
@@ -18,6 +19,8 @@ const CharactersDetail = () => {
   });
 
   const { name, image, actor, gender, hairColour, house, dateOfBirth } = data ?? {};
+
+  const houseValid = house as HogwartsHouse;
 
   return (
     <>
@@ -37,8 +40,8 @@ const CharactersDetail = () => {
               <p>House: {house}</p>
               <p>Date of Birth: {dateOfBirth}</p>
               <p>House: {house}</p>
-              {house && house !== preferred && (
-                <Button onClick={() => preferredHouse(house)}>
+              {houseValid !== preferred && (
+                <Button onClick={() => preferredHouse(houseValid)}>
                   Set {house} as preferred house
                 </Button>
               )}{" "}
